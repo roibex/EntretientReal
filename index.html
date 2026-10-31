@@ -4,55 +4,104 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Entretien paysager Real — Facturation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 </head>
 <body class="landing">
 <header class="topbar">
-  <a class="logo" href="index.html"><img class="logo-mark" src="logo.svg" alt=""> Entretien paysager Real</a>
-  <nav>
-    <a href="#fonctions">Fonctionnalités</a>
-    <a class="btn btn-primary" href="app.html">Se connecter</a>
-  </nav>
+  <div class="wrap topbar-inner">
+    <a class="logo" href="index.html"><img class="logo-mark" src="logo.svg" alt=""> Entretien paysager Real</a>
+    <nav>
+      <a class="nav-link" href="#fonctions">Fonctionnalités</a>
+      <a class="btn btn-primary" href="app.html">Se connecter</a>
+    </nav>
+  </div>
 </header>
 
 <section class="hero">
-  <div class="hero-text">
-    <img class="hero-logo" src="logo.svg" alt="">
-    <p class="eyebrow">Espace facturation</p>
-    <h1>Entretien paysager Real</h1>
-    <p>Tonte, taille de haies, nettoyages et déneigement : toutes les factures, soumissions, paiements et dépenses de la compagnie, au même endroit.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary btn-lg" href="app.html">Se connecter</a>
+  <svg class="hero-leaves" viewBox="0 0 400 400" aria-hidden="true">
+    <path d="M60 340C60 200 160 110 330 90c-20 170-110 250-270 250z"/>
+    <path d="M60 340 300 120" class="vein"/>
+  </svg>
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">Espace facturation</span>
+      <h1>Entretien paysager <span class="accent">Real</span></h1>
+      <p class="lead">Tonte, taille de haies, nettoyages et déneigement : toutes les factures, soumissions, paiements et dépenses de la compagnie, au même endroit.</p>
+      <div class="hero-actions">
+        <a class="btn btn-leaf btn-lg" href="app.html">Se connecter <span aria-hidden="true">→</span></a>
+      </div>
+      <ul class="hero-points">
+        <li>TPS et TVQ automatiques</li>
+        <li>PDF en un clic</li>
+        <li>Sur ordinateur et cellulaire</li>
+      </ul>
     </div>
-  </div>
-  <div class="hero-card" aria-hidden="true">
-    <div class="mock-head"><strong>Facture #1001</strong><span class="pill pill-paid">Payée</span></div>
-    <div class="mock-row"><span>Nettoyage printanier</span><span>250,00 $</span></div>
-    <div class="mock-row"><span>Tonte de pelouse × 4</span><span>180,00 $</span></div>
-    <div class="mock-row muted"><span>TPS 5 %</span><span>21,50 $</span></div>
-    <div class="mock-row muted"><span>TVQ 9,975 %</span><span>42,89 $</span></div>
-    <div class="mock-row total"><span>Total</span><span>494,39 $</span></div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-card">
+        <div class="mock-brand"><img src="logo.svg" alt=""><div><strong>Entretien paysager Real</strong><small>Facture #1001 · Famille Tremblay</small></div></div>
+        <div class="mock-row"><span>Nettoyage printanier</span><span>250,00 $</span></div>
+        <div class="mock-row"><span>Tonte de pelouse × 4</span><span>180,00 $</span></div>
+        <div class="mock-row muted"><span>TPS 5 %</span><span>21,50 $</span></div>
+        <div class="mock-row muted"><span>TVQ 9,975 %</span><span>42,89 $</span></div>
+        <div class="mock-row total"><span>Total</span><span>494,39 $</span></div>
+      </div>
+      <div class="float-card">
+        <span class="float-check">✓</span>
+        <div><strong>Paiement reçu</strong><small>Virement Interac · 494,39 $</small></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="fonctions" class="features">
-  <h2>Tout pour gérer la saison</h2>
-  <div class="grid">
-    <article><h3>Factures</h3><p>Tonte, taille de haie, nettoyage : choisissez vos services et la facture se remplit toute seule.</p></article>
-    <article><h3>Soumissions</h3><p>Préparez un devis pour un contrat de saison, puis transformez-le en facture une fois accepté.</p></article>
-    <article><h3>Paiements</h3><p>Notez un virement Interac, un chèque ou un acompte; le solde se calcule tout seul.</p></article>
-    <article><h3>Relevés clients</h3><p>Un relevé par client pour rappeler les montants dus, poliment.</p></article>
-    <article><h3>TPS et TVQ</h3><p>Taxes calculées sur chaque facture et totalisées pour vos déclarations.</p></article>
-    <article><h3>Dépenses</h3><p>Essence, équipement, végétaux : classez vos dépenses et récupérez les taxes payées.</p></article>
-    <article><h3>Rapports</h3><p>Ventes, encaissements et taxes à remettre pour le mois, le trimestre ou l'année.</p></article>
-    <article><h3>PDF à notre image</h3><p>Factures imprimées ou en PDF avec le logo et les couleurs de la compagnie.</p></article>
+<section id="fonctions" class="section">
+  <div class="wrap">
+    <p class="kicker">Fonctionnalités</p>
+    <h2>Tout pour gérer la saison</h2>
+    <p class="section-lead">De la soumission au paiement, sans papier et sans calculs à la main.</p>
+    <div class="feature-grid">
+      <article class="feature"><span class="icon"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span><h3>Factures</h3><p>Choisissez vos services et la facture se remplit toute seule.</p></article>
+      <article class="feature"><span class="icon"><svg viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></span><h3>Soumissions</h3><p>Un devis pour un contrat de saison, transformé en facture une fois accepté.</p></article>
+      <article class="feature"><span class="icon"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg></span><h3>Paiements</h3><p>Virement Interac, chèque ou acompte : le solde se calcule tout seul.</p></article>
+      <article class="feature"><span class="icon"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><h3>Relevés clients</h3><p>Un relevé par client pour rappeler les montants dus, poliment.</p></article>
+      <article class="feature"><span class="icon"><svg viewBox="0 0 24 24"><path d="M19 5 5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span><h3>TPS et TVQ</h3><p>Calculées sur chaque facture et totalisées pour vos déclarations.</p></article>
+      <article class="feature"><span class="icon"><svg viewBox="0 0 24 24"><path d="M5 2v20l2.5-1.5L10 22l2-1.5 2 1.5 2.5-1.5L19 22V2l-2.5 1.5L14 2l-2 1.5L10 2 7.5 3.5z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span><h3>Dépenses</h3><p>Essence, équipement, végétaux : classés, avec les taxes à récupérer.</p></article>
+      <article class="feature"><span class="icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M8 17v-5M13 17V8M18 17v-3"/></svg></span><h3>Rapports</h3><p>Ventes, encaissements et taxes à remettre, par mois, trimestre ou année.</p></article>
+      <article class="feature"><span class="icon"><svg viewBox="0 0 24 24"><path d="M6 9V2h12v7"/><rect x="2" y="9" width="20" height="8" rx="2"/><path d="M6 14h12v8H6z"/></svg></span><h3>PDF à notre image</h3><p>Factures imprimées ou en PDF avec le logo de la compagnie.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <p class="kicker">Comment ça marche</p>
+    <h2>Trois étapes, c'est tout</h2>
+    <ol class="steps">
+      <li><span class="num">1</span><h3>Ajoutez vos clients</h3><p>Nom, adresse, courriel : une seule fois, puis ils sont toujours là.</p></li>
+      <li><span class="num">2</span><h3>Créez la facture</h3><p>Choisissez les services faits; les taxes et le total se calculent seuls.</p></li>
+      <li><span class="num">3</span><h3>Faites-vous payer</h3><p>Envoyez le PDF, notez le paiement, et suivez ce qui reste à recevoir.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap cta-inner">
+    <div>
+      <h2>Prêt à facturer?</h2>
+      <p>Accédez à vos factures de l'ordinateur ou du cellulaire.</p>
+    </div>
+    <a class="btn btn-leaf btn-lg" href="app.html">Se connecter <span aria-hidden="true">→</span></a>
   </div>
 </section>
 
 <footer class="footer">
-  <span>© 2026 Entretien paysager Real</span>
-  <a href="app.html">Se connecter →</a>
+  <div class="wrap footer-inner">
+    <span class="footer-brand"><img src="logo.svg" alt=""> © 2026 Entretien paysager Real</span>
+    <a href="app.html">Se connecter →</a>
+  </div>
 </footer>
 </body>
 </html>
