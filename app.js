@@ -94,23 +94,36 @@ const AUTH_MODES = {
   forgot: { title: 'Mot de passe oublié', button: 'Envoyer le lien', password: false },
   reset: { title: 'Nouveau mot de passe', button: 'Enregistrer', password: true, noEmail: true },
 };
-function showAuth(mode, message = '') {
+function showAuth(mode, message = '', prefill = '') {
   const m = AUTH_MODES[mode];
   const form = $('#auth-form');
+  const isNew = mode === 'signup' || mode === 'reset';
+  // Sur cellulaire : pas de majuscule ni de correction automatique dans le courriel et le mot de passe
+  const noAuto = 'autocapitalize="none" autocorrect="off" spellcheck="false"';
   form.innerHTML = `
     <div class="logo"><img class="logo-mark" src="logo.svg" alt=""> Entretien paysager Réal</div>
     <h2>${m.title}</h2>
     ${message ? `<p class="auth-msg">${esc(message)}</p>` : ''}
-    ${m.noEmail ? '' : '<label>Courriel<input type="email" name="email" autocomplete="email" required></label>'}
-    ${m.password ? `<label>Mot de passe<input type="password" name="password" minlength="8" autocomplete="${mode === 'login' ? 'current-password' : 'new-password'}" required></label>` : ''}
+    ${m.noEmail ? '' : `<label>Courriel<input type="email" name="email" autocomplete="email" inputmode="email" ${noAuto} value="${esc(prefill)}" required></label>`}
+    ${m.password ? `<label>Mot de passe<input type="password" name="password" minlength="8" autocomplete="${isNew ? 'new-password' : 'current-password'}" ${noAuto} required></label>` : ''}
+    ${m.password && isNew ? `<label>Confirmer le mot de passe<input type="password" name="password2" minlength="8" autocomplete="new-password" ${noAuto} required></label>` : ''}
+    ${m.password ? '<label class="show-pass"><input type="checkbox" data-show-pass> Afficher le mot de passe</label>' : ''}
     <button class="btn btn-primary" style="width:100%;justify-content:center">${m.button}</button>
     <div class="auth-links">
       ${mode === 'login' ? '<a data-mode="signup">Créer un compte</a><a data-mode="forgot">Mot de passe oublié?</a>' : mode === 'reset' ? '' : '<a data-mode="login">← Retour à la connexion</a>'}
     </div>`;
-  form.onclick = e => { const a = e.target.closest('a[data-mode]'); if (a) showAuth(a.dataset.mode); };
+  form.onclick = e => {
+    const a = e.target.closest('a[data-mode]');
+    if (a) showAuth(a.dataset.mode, '', form.email ? form.email.value.trim() : '');
+  };
+  form.onchange = e => {
+    if (e.target.matches('[data-show-pass]')) form.querySelectorAll('input[name^=password]').forEach(i => { i.type = e.target.checked ? 'text' : 'password'; });
+  };
   form.onsubmit = async e => {
     e.preventDefault();
-    const fd = new FormData(form), email = fd.get('email'), password = fd.get('password');
+    const fd = new FormData(form), password = fd.get('password');
+    const email = (fd.get('email') || '').trim().toLowerCase();
+    if (isNew && password !== fd.get('password2')) return showAuth(mode, 'Les deux mots de passe ne sont pas identiques.', email);
     const btn = form.querySelector('button'); btn.disabled = true;
     let res;
     if (mode === 'login') res = await cloud.auth.signInWithPassword({ email, password });
@@ -118,8 +131,8 @@ function showAuth(mode, message = '') {
     if (mode === 'forgot') res = await cloud.auth.resetPasswordForEmail(email, { redirectTo: location.href.split('#')[0] });
     if (mode === 'reset') res = await cloud.auth.updateUser({ password });
     btn.disabled = false;
-    if (res.error) return showAuth(mode, traduireErreur(res.error.message));
-    if (mode === 'signup' && !res.data.session) return showAuth('login', 'Compte créé! Confirmez votre courriel avec le lien reçu, puis connectez-vous.');
+    if (res.error) return showAuth(mode, traduireErreur(res.error.message), email);
+    if (mode === 'signup' && !res.data.session) return showAuth('login', 'Compte créé! Confirmez votre courriel avec le lien reçu, puis connectez-vous.', email);
     if (mode === 'forgot') return showAuth('login', 'Si ce courriel a un compte, un lien de réinitialisation vient d\'être envoyé.');
     if (mode === 'reset') { if (user && user.id === res.data.user.id) $('#auth').hidden = true; else enter(res.data.user); }
   };
@@ -130,6 +143,8 @@ function traduireErreur(msg) {
   if (/email not confirmed/i.test(msg)) return 'Confirmez d\'abord votre courriel avec le lien reçu.';
   if (/already registered/i.test(msg)) return 'Ce courriel a déjà un compte.';
   if (/signups not allowed/i.test(msg)) return 'Les nouvelles inscriptions sont désactivées.';
+  if (/rate limit|too many/i.test(msg)) return 'Trop de tentatives ou de courriels envoyés. Réessayez dans une heure.';
+  if (/password.*(at least|characters)|weak/i.test(msg)) return 'Mot de passe trop faible : au moins 8 caractères.';
   if (/failed to fetch|network/i.test(msg)) return 'Impossible de joindre le serveur. Vérifiez votre connexion Internet et config.js.';
   return msg;
 }
