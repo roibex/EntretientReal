@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entretien paysager Real — Facturation</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+</head>
+<body class="app">
+<aside class="sidebar">
+  <a class="logo" href="index.html"><img class="logo-mark" src="logo.svg" alt=""> Entretien paysager Real</a>
+  <nav id="menu">
+    <a data-view="dashboard" class="active">Tableau de bord</a>
+    <a data-view="facture">Factures</a>
+    <a data-view="devis">Devis</a>
+    <a data-view="clients">Clients</a>
+    <a data-view="produits">Produits & services</a>
+    <a data-view="depenses">Dépenses</a>
+    <a data-view="rapports">Rapports</a>
+    <a data-view="parametres">Paramètres</a>
+  </nav>
+  <div class="sidebar-foot">
+    <div id="sync" class="sync"></div>
+    <button id="signout" class="btn btn-sm" hidden>Se déconnecter</button>
+  </div>
+</aside>
+<main id="view" class="content"></main>
+
+<div id="auth" class="auth" hidden>
+  <form id="auth-form" class="auth-card"></form>
+</div>
+
+<dialog id="modal"><form method="dialog" id="modal-form"></form></dialog>
+<div id="print-area"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

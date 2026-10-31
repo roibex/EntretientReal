@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Entretien paysager Real">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a8a6f"/>
+      <stop offset="1" stop-color="#17594a"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
+  <!-- R : tige et boucle -->
+  <path d="M20 50V14h11a10 10 0 0 1 0 20H20" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Jambe du R en forme de feuille -->
+  <path d="M28 32c11.5 0 20 7 20 20-12.5 0-20-7.5-20-20z" fill="#b8e986"/>
+  <path d="M29.5 33.5 46 50.5" stroke="#17594a" stroke-width="1.8" stroke-linecap="round"/></svg>
