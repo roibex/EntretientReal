@@ -173,7 +173,7 @@ function start() {
   cloud.auth.onAuthStateChange((event, session) => setTimeout(() => {
     if (event === 'PASSWORD_RECOVERY') return showAuth('reset');
     if (event === 'SIGNED_OUT' || !session) {
-      user = null; db = blank(); $('#signout').hidden = true; setSync('');
+      user = null; db = blank(); $('#signout').hidden = true; setSync(''); setMenu(false);
       $('#view').innerHTML = ''; return showAuth('login');
     }
     if (event === 'INITIAL_SESSION' || event === 'SIGNED_IN') enter(session.user);
