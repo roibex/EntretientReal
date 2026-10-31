@@ -12,15 +12,17 @@
   --ok: #2c7a3f;
   --warn: #a8670b;
   --radius: 10px;
-  font-family: "Barlow", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Avenir Next Condensed", "Bahnschrift Condensed", "Roboto Condensed", "Arial Narrow", sans-serif-condensed, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-body);
   color: var(--ink);
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.5; }
 a { color: var(--brand); text-decoration: none; }
-h1, h2, h3 { line-height: 1.15; margin: 0 0 .5em; font-family: "Barlow Condensed", "Barlow", system-ui, sans-serif; font-weight: 700; letter-spacing: .01em; }
-.logo { font-family: "Barlow Condensed", "Barlow", system-ui, sans-serif; text-transform: uppercase; letter-spacing: .02em; }
+h1, h2, h3 { line-height: 1.15; margin: 0 0 .5em; font-family: var(--font-display); font-stretch: condensed; font-weight: 700; letter-spacing: .01em; }
+.logo { font-family: var(--font-display); font-stretch: condensed; text-transform: uppercase; letter-spacing: .02em; }
 
 .btn { display: inline-flex; align-items: center; gap: .4em; border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: .5em 1em; border-radius: 8px; cursor: pointer; font: inherit; font-size: .95rem; }
 .btn:hover { border-color: var(--brand); }
@@ -66,7 +68,7 @@ h1, h2, h3 { line-height: 1.15; margin: 0 0 .5em; font-family: "Barlow Condensed
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='52' viewBox='0 0 70 52'%3E%3Cpath fill='%234caf50' d='M22 52C20 44 15 38 9 34C17 36 25 42 30 52ZM27 52C26 40 24 30 21 22C29 30 33 40 35 52ZM32 52C32 38 34 24 37 12C40 24 40 38 39 52ZM35 52C37 40 42 30 50 23C47 32 44 42 43 52ZM40 52C44 44 52 38 61 35C55 40 50 46 48 52ZM0 52C2 46 4 42 7 40C6 45 6 48 7 52ZM63 52C64 48 66 45 70 43C69 47 69 50 70 52Z'/%3E%3C/svg%3E") repeat-x 0 bottom / 70px 52px, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='52' viewBox='0 0 70 52'%3E%3Cpath fill='%232e7d32' d='M22 52C20 44 15 38 9 34C17 36 25 42 30 52ZM27 52C26 40 24 30 21 22C29 30 33 40 35 52ZM32 52C32 38 34 24 37 12C40 24 40 38 39 52ZM35 52C37 40 42 30 50 23C47 32 44 42 43 52ZM40 52C44 44 52 38 61 35C55 40 50 46 48 52ZM0 52C2 46 4 42 7 40C6 45 6 48 7 52ZM63 52C64 48 66 45 70 43C69 47 69 50 70 52Z'/%3E%3C/svg%3E") repeat-x 35px bottom / 84px 62px; }
 .services { background: #2e7d32; color: #fff; }
 .services-inner { display: flex; align-items: center; gap: 12px 28px; flex-wrap: wrap; padding-top: 18px; padding-bottom: 20px; }
-.services-label { font-family: "Barlow Condensed", "Barlow", sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: 1.15rem; }
+.services-label { font-family: var(--font-display); font-stretch: condensed; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: 1.15rem; }
 .services ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 22px; padding: 0; margin: 0; font-weight: 600; }
 .services li { display: inline-flex; align-items: center; gap: 8px; }
 .services li::before { content: ""; width: 7px; height: 7px; border-radius: 99px; background: #c8e6c9; }
@@ -147,7 +149,7 @@ h1, h2, h3 { line-height: 1.15; margin: 0 0 .5em; font-family: "Barlow Condensed
 body.app { display: grid; grid-template-columns: 230px 1fr; min-height: 100vh; }
 .mobile-bar { display: none; position: sticky; top: 0; z-index: 20; align-items: center; gap: 12px; padding: 10px 16px; background: var(--black); color: #fff; }
 .mobile-bar .logo-mark { width: 32px; height: 32px; margin-left: auto; }
-.mobile-title { font-family: "Barlow Condensed", "Barlow", sans-serif; font-weight: 700; font-size: 1.25rem; text-transform: uppercase; letter-spacing: .03em; }
+.mobile-title { font-family: var(--font-display); font-stretch: condensed; font-weight: 700; font-size: 1.25rem; text-transform: uppercase; letter-spacing: .03em; }
 .menu-btn { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.2); border-radius: 10px; background: transparent; color: #fff; cursor: pointer; padding: 0; }
 .menu-btn svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
 .drawer-backdrop { position: fixed; inset: 0; z-index: 25; background: rgba(0,0,0,.5); opacity: 0; pointer-events: none; transition: opacity .25s; }
