@@ -121,7 +121,7 @@ function showAuth(mode, message = '') {
     if (res.error) return showAuth(mode, traduireErreur(res.error.message));
     if (mode === 'signup' && !res.data.session) return showAuth('login', 'Compte créé! Confirmez votre courriel avec le lien reçu, puis connectez-vous.');
     if (mode === 'forgot') return showAuth('login', 'Si ce courriel a un compte, un lien de réinitialisation vient d\'être envoyé.');
-    if (mode === 'reset') enter(res.data.user);
+    if (mode === 'reset') { if (user && user.id === res.data.user.id) $('#auth').hidden = true; else enter(res.data.user); }
   };
   $('#auth').hidden = false;
 }
@@ -133,16 +133,23 @@ function traduireErreur(msg) {
   if (/failed to fetch|network/i.test(msg)) return 'Impossible de joindre le serveur. Vérifiez votre connexion Internet et config.js.';
   return msg;
 }
+// Écran de chargement : couvre l'app tant qu'on ne sait pas si l'utilisateur est connecté
+function showLoading() {
+  $('#auth-form').innerHTML = `<div class="logo"><img class="logo-mark" src="logo.svg" alt=""> Entretien paysager Real</div><p class="auth-loading">Chargement…</p>`;
+  $('#auth-form').onsubmit = e => e.preventDefault();
+  $('#auth').hidden = false;
+}
 async function enter(u) {
-  if (user && user.id === u.id && $('#auth').hidden) return;
+  if (user && user.id === u.id) return;
   user = u;
-  $('#auth').hidden = true;
-  $('#signout').hidden = false;
+  showLoading();
   try { await loadCloud(); } catch (e) { setSync('Impossible de charger les données', true); alert('Impossible de charger vos données : ' + e.message); }
   render();
+  $('#signout').hidden = false;
+  $('#auth').hidden = true;
 }
 function start() {
-  if (!cloud) { setSync('Mode local (données dans ce navigateur)'); render(); return; }
+  if (!cloud) { $('#auth').hidden = true; setSync('Mode local (données dans ce navigateur)'); render(); return; }
   $('#signout').onclick = async () => {
     if (savePending) { clearTimeout(saveTimer); await pushCloud(); }
     await cloud.auth.signOut();

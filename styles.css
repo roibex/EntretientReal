@@ -137,6 +137,7 @@ body.app { display: grid; grid-template-columns: 230px 1fr; min-height: 100vh; }
 .auth[hidden] { display: none; }
 .auth-card { width: min(410px, 100%); background: var(--surface); border-radius: 20px; padding: 32px; display: grid; gap: 4px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.5); }
 .auth-card .logo { margin-bottom: 18px; }
+.auth-loading { margin: 0; color: var(--muted); }
 .auth-card h2 { font-size: 1.5rem; font-weight: 800; }
 .auth-card .btn-primary { padding: .75em 1em; border-radius: 10px; font-weight: 700; margin-top: 6px; }
 .auth-card input { padding: .65em .75em; border-radius: 10px; }
