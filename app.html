@@ -11,7 +11,15 @@
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 </head>
 <body class="app">
-<aside class="sidebar">
+<header class="mobile-bar">
+  <button id="menu-toggle" class="menu-btn" type="button" aria-label="Ouvrir le menu" aria-controls="sidebar" aria-expanded="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <span id="mobile-title" class="mobile-title">Tableau de bord</span>
+  <img class="logo-mark" src="logo.svg" alt="">
+</header>
+<div id="drawer-backdrop" class="drawer-backdrop"></div>
+<aside id="sidebar" class="sidebar">
   <a class="logo" href="index.html"><img class="logo-mark" src="logo.svg" alt=""> Entretien paysager Réal</a>
   <nav id="menu">
     <a data-view="dashboard" class="active">Tableau de bord</a>

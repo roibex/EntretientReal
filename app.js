@@ -206,11 +206,22 @@ let current = 'dashboard';
 document.getElementById('menu').addEventListener('click', e => {
   const a = e.target.closest('a[data-view]'); if (!a) return;
   go(a.dataset.view);
+  setMenu(false);
 });
+// Menu coulissant sur cellulaire
+function setMenu(open) {
+  document.body.classList.toggle('menu-open', open);
+  $('#menu-toggle').setAttribute('aria-expanded', open);
+}
+$('#menu-toggle').onclick = () => setMenu(!document.body.classList.contains('menu-open'));
+$('#drawer-backdrop').onclick = () => setMenu(false);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 function go(view) {
   current = view;
   document.querySelectorAll('#menu a').forEach(a => a.classList.toggle('active', a.dataset.view === view));
+  $('#mobile-title').textContent = document.querySelector(`#menu a[data-view="${view}"]`).textContent;
   render();
+  window.scrollTo(0, 0);
 }
 function render() {
   document.documentElement.style.setProperty('--brand', db.business.color || '#2e7d32');  $('#view').innerHTML = (views[current] || views.dashboard)();
