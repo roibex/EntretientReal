@@ -1,13 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Entretien paysager Real">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#2a8a6f"/>
-      <stop offset="1" stop-color="#17594a"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
-  <!-- R : tige et boucle -->
-  <path d="M20 50V14h11a10 10 0 0 1 0 20H20" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Jambe du R en forme de feuille -->
-  <path d="M28 32c11.5 0 20 7 20 20-12.5 0-20-7.5-20-20z" fill="#b8e986"/>
-  <path d="M29.5 33.5 46 50.5" stroke="#17594a" stroke-width="1.8" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Entretien paysager Réal">
+  <rect width="100" height="100" rx="22" fill="#141414"/>
+  <!-- R blanc : tige courte, boucle et jambe -->
+  <path fill="#fff" fill-rule="evenodd" d="M22 16H58C72 16 80 25 80 36C80 45 75 51 67 54L80 84H63L52 57H40V63L22 71ZM40 30H56C60 30 63 32.5 63 36C63 39.5 60 43 56 43H40Z"/>
+  <!-- Pousse verte qui sort du gazon -->
+  <path d="M28 84C27.5 71 32 61 42 54" fill="none" stroke="#4caf50" stroke-width="4.5" stroke-linecap="round"/>
+  <path fill="#4caf50" d="M40 55C40 40 52 29.5 69 28.5C67 44 56 54.5 40 55Z"/>
+  <path d="M42 53C50 45 58 37.5 66 31" fill="none" stroke="#2e7d32" stroke-width="1.3" stroke-linecap="round"/>
+  <!-- Gazon -->
+  <path fill="#4caf50" d="M16 86L19.5 76L22 86ZM20.5 86L25 72.5L28.5 86ZM27 86L31.5 75L33.5 86ZM31.5 86L37 79L37.5 86Z"/>
+</svg>

@@ -1,4 +1,4 @@
-// Entretien paysager Real — application de facturation (données stockées dans localStorage)
+// Entretien paysager Réal — application de facturation (données stockées dans localStorage)
 const TPS = 0.05;
 const TVQ = 0.09975;
 const KEY = 'facto-data-v1';
@@ -16,7 +16,7 @@ const round2 = n => Math.round(n * 100) / 100;
 function seed() {
   const c1 = uid(), c2 = uid();
   return {
-    business: { name: 'Entretien paysager Real', owner: '', address: '123, rue Principale\nMontréal (QC) H2X 1A1', email: '', phone: '', tpsNo: '', tvqNo: '', color: '#1f6f5c', terms: 30, notes: 'Merci pour votre confiance!' },
+    business: { name: 'Entretien paysager Réal', owner: '', address: '123, rue Principale\nMontréal (QC) H2X 1A1', email: '', phone: '', tpsNo: '', tvqNo: '', color: '#2e7d32', terms: 30, notes: 'Merci pour votre confiance!' },
     clients: [
       { id: c1, name: 'Famille Tremblay', email: 'tremblay@example.com', address: '45, rue des Érables\nQuébec (QC)' },
       { id: c2, name: 'Copropriété Les Jardins', email: 'gestion@lesjardins.example', address: '900, boul. Laurier\nQuébec (QC)' },
@@ -98,7 +98,7 @@ function showAuth(mode, message = '') {
   const m = AUTH_MODES[mode];
   const form = $('#auth-form');
   form.innerHTML = `
-    <div class="logo"><img class="logo-mark" src="logo.svg" alt=""> Entretien paysager Real</div>
+    <div class="logo"><img class="logo-mark" src="logo.svg" alt=""> Entretien paysager Réal</div>
     <h2>${m.title}</h2>
     ${message ? `<p class="auth-msg">${esc(message)}</p>` : ''}
     ${m.noEmail ? '' : '<label>Courriel<input type="email" name="email" autocomplete="email" required></label>'}
@@ -135,7 +135,7 @@ function traduireErreur(msg) {
 }
 // Écran de chargement : couvre l'app tant qu'on ne sait pas si l'utilisateur est connecté
 function showLoading() {
-  $('#auth-form').innerHTML = `<div class="logo"><img class="logo-mark" src="logo.svg" alt=""> Entretien paysager Real</div><p class="auth-loading">Chargement…</p>`;
+  $('#auth-form').innerHTML = `<div class="logo"><img class="logo-mark" src="logo.svg" alt=""> Entretien paysager Réal</div><p class="auth-loading">Chargement…</p>`;
   $('#auth-form').onsubmit = e => e.preventDefault();
   $('#auth').hidden = false;
 }
@@ -198,7 +198,7 @@ function go(view) {
   render();
 }
 function render() {
-  document.documentElement.style.setProperty('--brand', db.business.color || '#1f6f5c');  $('#view').innerHTML = (views[current] || views.dashboard)();
+  document.documentElement.style.setProperty('--brand', db.business.color || '#2e7d32');  $('#view').innerHTML = (views[current] || views.dashboard)();
 }
 
 // ---------- Vues ----------
